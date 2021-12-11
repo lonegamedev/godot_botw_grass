@@ -1,6 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=2]
-
-[ext_resource path="res://sha_wind.shader" type="Shader" id=1]
+[gd_resource type="SpatialMaterial" format=2]
 
 [resource]
-shader = ExtResource( 1 )
+albedo_color = Color( 0.0784314, 0.14902, 0.0117647, 1 )
