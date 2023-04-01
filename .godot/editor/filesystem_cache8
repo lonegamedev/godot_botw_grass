@@ -1,0 +1,16 @@
+2a60927148abd1d33b818b535e306557
+::res://::1680373329
+camera_spinner.gd::GDScript::-1::1680373321::0::1::::<>Node3D<>::
+default_env.tres::Environment::-1::1680373321::0::1::::<><>::
+grass.gd::GDScript::-1::1680373321::0::1::::<>MultiMeshInstance3D<>::
+grass_factory.gd::GDScript::-1::1680373321::0::1::::<>Object<>::
+icon.png::CompressedTexture2D::3229829549639373461::1680373276::1680373330::1::::<><>::
+mat_floor.tres::StandardMaterial3D::-1::1680373321::0::1::::<><>::
+mat_grass.tres::ShaderMaterial::-1::1680373321::0::1::::<><>::res://sha_grass.gdshader
+mat_shader.tres::ShaderMaterial::-1::1680373321::0::1::::<><>::res://sha_wind.gdshader
+mesh_factory.gd::GDScript::-1::1680373321::0::1::::<>Object<>::
+README.md::TextFile::-1::1680373276::0::1::::<><>::
+Scene.tscn::PackedScene::-1::1680373321::0::1::::<><>::res://terrain.obj<>res://mat_grass.tres<>res://mat_floor.tres<>res://grass.gd<>res://camera_spinner.gd
+sha_grass.gdshader::Shader::-1::1680373321::0::1::::<><>::
+sha_wind.gdshader::Shader::-1::1680373321::0::1::::<><>::
+terrain.obj::Mesh::2300157302763028637::1680373276::1680373331::1::::<><>::
