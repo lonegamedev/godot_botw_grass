@@ -1,8 +1,8 @@
 extends Object
 
 static func rand_bcc() -> Vector3:
-	var u:float = rand_range(0, 1)
-	var v:float = rand_range(0, 1)
+	var u:float = randf_range(0, 1)
+	var v:float = randf_range(0, 1)
 	if (u + v) >= 1:
 		u = 1 - u
 		v = 1 - v
@@ -28,14 +28,14 @@ static func get_orthogonal_to(p_v:Vector3) -> Vector3:
 
 static func quat_shortest_arc(
 	p_normal_from:Vector3,
-	p_normal_to:Vector3) -> Quat:
+	p_normal_to:Vector3) -> Quaternion:
 		var dot:float = p_normal_from.dot(p_normal_to)
 		if dot > 0.999999:
-			return Quat.IDENTITY
+			return Quaternion.IDENTITY
 		if dot < -0.999999:
-			return Quat(get_orthogonal_to(p_normal_from), PI)
+			return Quaternion(get_orthogonal_to(p_normal_from), PI)
 		var axis:Vector3 = p_normal_from.cross(p_normal_to)
-		return Quat(axis.x, axis.y, axis.z, 1 + dot).normalized()
+		return Quaternion(axis.x, axis.y, axis.z, 1 + dot).normalized()
 
 static func triangle_area(p_a:Vector3, p_b:Vector3, p_c:Vector3)->float:
 	var a:float = p_a.distance_to(p_b)
@@ -55,9 +55,9 @@ static func generate(
 			return []
 		var spawns:Array = []
 		var surface:Array = p_mesh.surface_get_arrays(0)
-		var indices:PoolIntArray = surface[Mesh.ARRAY_INDEX]
-		var positions:PoolVector3Array = surface[Mesh.ARRAY_VERTEX]
-		var normals:PoolVector3Array = surface[Mesh.ARRAY_NORMAL]
+		var indices:PackedInt32Array = surface[Mesh.ARRAY_INDEX]
+		var positions:PackedVector3Array = surface[Mesh.ARRAY_VERTEX]
+		var normals:PackedVector3Array = surface[Mesh.ARRAY_NORMAL]
 		for index in range(0, indices.size(), 3):
 			var j = indices[index]
 			var k = indices[index + 1]
@@ -82,14 +82,14 @@ static func generate(
 					normals[k],
 					normals[l]
 				)
-				var q1:Quat = Quat(Vector3.UP, deg2rad(rand_range(0, 360)))
-				var q2:Quat = quat_shortest_arc(Vector3.UP, normal)
-				var transform:Transform = Transform(Basis(q2 * q1), position)
+				var q1:Quaternion = Quaternion(Vector3.UP, deg_to_rad(randf_range(0, 360)))
+				var q2:Quaternion = quat_shortest_arc(Vector3.UP, normal)
+				var transform:Transform3D = Transform3D(Basis(q2 * q1), position)
 				var params:Color = Color(
-					rand_range(p_blade_width.x, p_blade_width.y),
-					rand_range(p_blade_height.x, p_blade_height.y),
-					deg2rad(rand_range(p_sway_pitch.x, p_sway_pitch.y)),
-					deg2rad(rand_range(p_sway_yaw.x, p_sway_yaw.y))
+					randf_range(p_blade_width.x, p_blade_width.y),
+					randf_range(p_blade_height.x, p_blade_height.y),
+					deg_to_rad(randf_range(p_sway_pitch.x, p_sway_pitch.y)),
+					deg_to_rad(randf_range(p_sway_yaw.x, p_sway_yaw.y))
 				)
 				spawns.push_back([transform, params])
 		return spawns

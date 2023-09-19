@@ -2,8 +2,8 @@ extends Object
 
 static func simple_grass():
 	
-	var verts = PoolVector3Array()
-	var uvs = PoolVector2Array()
+	var verts = PackedVector3Array()
+	var uvs = PackedVector2Array()
 	
 	verts.push_back(Vector3(-0.5, 0.0, 0.0))
 	uvs.push_back(Vector2(0.0, 0.0))
